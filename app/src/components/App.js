@@ -17,7 +17,8 @@ function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const HandlerContextValue = {
-    handleCheck
+    handleCheck,
+    handleDelete,
   }
 
   useEffect(() => {
@@ -47,6 +48,11 @@ function App() {
     const index = _todos.findIndex(t => t.id === id)
     _todos[index].complete = !_todos[index].complete
     setTodos(_todos)
+  }
+
+  function handleDelete(id) {
+    const _todos = [...todos]
+    setTodos(_todos.filter(t => t.id !== id))
   }
 
   const modeIcon = darkTheme ? dark : light

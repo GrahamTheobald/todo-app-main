@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { HandlerContext } from './App'
 import cross from '../images/icon-cross.svg'
-// import '../css/app.css'
 
-export default function Delete() {
+export default function Delete({id}) {
+  const {handleDelete} = useContext(HandlerContext)
   return (
-    <div className="delete">
+    <div 
+      onClick={() => handleDelete(id)}
+      className="delete">
       <img src={cross} alt="delete"/>
     </div>
   )

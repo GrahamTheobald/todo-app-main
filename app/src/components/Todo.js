@@ -21,7 +21,7 @@ export default function Todo({todo}) {
           className={todo.complete ? "todo__text complete" : "todo__text"}>
           {todo.text}</div>
       </div>
-      <Delete/>
+      <Delete id={todo.id}/>
     </div>
   )
 }
