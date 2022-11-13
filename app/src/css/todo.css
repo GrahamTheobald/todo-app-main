@@ -1,0 +1,33 @@
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--MutedText);
+}
+.todo__left {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+.todo__text {
+    color: var(--BoldText)
+}
+.todo__text.complete {
+    color: var(--MutedText);
+    text-decoration: line-through;
+    text-decoration-color: var(--MidText);
+}
+
+@media screen and (min-width: 600px) {
+    .todo__left:hover {
+        cursor: pointer;
+    }
+    .todo .delete {
+        opacity: 0;
+    }
+    .todo.hover .delete {
+        transition: .3s;
+        opacity: 1
+    }   
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "text": "Jog around in park 3x",
+    "complete": true,
+    "id": 1
+  },
+  {
+    "text": "10 minutes meditation",
+    "complete": false,
+    "id": 2
+  },
+  {
+    "text": "Read for 1 hour",
+    "complete": false,
+    "id": 3
+  },
+  {
+    "text": "Pick up groceries",
+    "complete": false,
+    "id": 4
+  }
+]

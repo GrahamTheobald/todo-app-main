@@ -1,0 +1,47 @@
+@import-normalize;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --CheckBackground: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --CheckBorder: radial-gradient(circle at top left,hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --Accent: hsl(220, 98%, 61%);
+  --DarkBackground: hsl(0, 0%, 88%);
+  --Background: hsl(0, 0%, 98%);
+  --BoldText: hsl(235, 19%, 35%);
+  --MidText: hsl(236, 9%, 61%);
+  --MutedText: hsl(233, 11%, 84%);
+  --Border-Radius: .5rem;
+  --BoxShadow: 0 5px 20px 0 #aaa;
+}
+
+[data-theme="dark"] {
+  --DarkBackground: hsl(235, 21%, 11%);
+  --Background: hsl(235, 24%, 19%);
+  --BoldText: hsl(234, 39%, 85%);
+  --MidText: hsl(234, 11%, 52%);
+  --MutedText: hsl(233, 14%, 35%);
+  --BoxShadow: 0 5px 20px #111;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:'Josefin Sans', -apple-system, BlinkMacSystemFont,  'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

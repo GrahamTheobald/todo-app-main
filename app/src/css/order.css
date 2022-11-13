@@ -1,0 +1,26 @@
+.order {
+    border-radius: var(--Border-Radius);
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    background-color: var(--Background);
+}
+.order > div {
+    color: var(--MidText);
+    font-weight: 700;
+}
+.order > div.active {
+    color: var(--Accent);
+}
+.order > div:hover {
+    transition: .3s;
+    cursor: pointer;
+    color: var(--BoldText);
+}
+
+@media screen and (min-width: 600px) {
+    .order {
+        padding: 0;
+    } 
+}

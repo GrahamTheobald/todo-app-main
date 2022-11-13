@@ -1,0 +1,20 @@
+.add-todo {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    border-radius: var(--Border-Radius);
+    background-color: var(--Background);
+    font-size: inherit;
+}
+.add-todo > input {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    background-color: inherit;
+    color: var(--BoldText);
+    caret-color: var(--Accent);
+}
+.add-todo > input:focus-visible {
+    outline: none;
+    border: none;
+}
