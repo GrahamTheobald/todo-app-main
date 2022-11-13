@@ -15,7 +15,6 @@
   flex-direction: column;
   gap: 1.2rem;
   font-size: .9rem;
-  overflow: auto;
 }
 
 .header {
@@ -41,6 +40,7 @@
   border-radius: var(--Border-Radius);
   background-color: var(--Background);
   box-shadow: var(--BoxShadow);
+  overflow: auto;
 }
 .list__footer {
   padding: 1.2rem;
@@ -59,10 +59,20 @@
   margin-top: 2rem;
   text-align: center;
   color: var(--MidText);
+  overflow: auto;
 }
 
 .delete {
   width: .8rem
+}
+.add {
+  display: grid;
+  place-items: center;
+  color: var(--MidText);
+}
+.add:hover {
+  cursor: pointer;
+  color: var(--BoldText);
 }
 
 
