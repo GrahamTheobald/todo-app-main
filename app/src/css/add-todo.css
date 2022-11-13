@@ -7,6 +7,7 @@
     font-size: inherit;
 }
 .add-todo > input {
+    width: 100%;
     font-family: inherit;
     font-size: inherit;
     border: none;

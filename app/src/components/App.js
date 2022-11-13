@@ -45,7 +45,6 @@ function App() {
   function handleCheck(id) {
     const _todos = [...todos]
     const index = _todos.findIndex(t => t.id === id)
-    console.log(index)
     _todos[index].complete = !_todos[index].complete
     setTodos(_todos)
   }

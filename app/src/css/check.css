@@ -1,4 +1,5 @@
 .check {
+    flex-shrink: 0;
     width: 1.2rem;
     height: 1.2rem;
     display: grid;
