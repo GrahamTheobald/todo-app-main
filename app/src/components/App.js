@@ -13,7 +13,7 @@ export const HandlerContext = React.createContext()
 
 function App() {
   const [darkTheme, setDarkTheme] = useState()
-  const [todos, setTodos] = useState(data)
+  const [todos, setTodos] = useState([])
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const HandlerContextValue = {
@@ -24,17 +24,28 @@ function App() {
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth))
     initialTheme()
+    initialTodos()
   }, [])
 
   useEffect(() => {
     if (darkTheme == undefined) return
     localStorage.setItem(`${STORAGE_KEY}-theme`, darkTheme)
   }, [darkTheme])
+
+  useEffect(() => {
+    if (todos.length === 0) return 
+    localStorage.setItem(`${STORAGE_KEY}-todos`, JSON.stringify(todos))
+  }, [todos])
  
   function initialTheme() {
     const storageTheme = JSON.parse(localStorage.getItem(`${STORAGE_KEY}-theme`))
     const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     setDarkTheme(storageTheme == undefined ? defaultDark : storageTheme)
+  }
+
+  function initialTodos() {
+    const storageTodos = JSON.parse(localStorage.getItem(`${STORAGE_KEY}-todos`))
+    setTodos(storageTodos || data)
   }
 
   function handleAddTodo(todo) {
