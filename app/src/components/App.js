@@ -9,11 +9,16 @@ import { v4 as uuid} from 'uuid'
 import '../css/app.css'
 
 const STORAGE_KEY = 'todo-app-main'
+export const HandlerContext = React.createContext()
 
 function App() {
   const [darkTheme, setDarkTheme] = useState()
   const [todos, setTodos] = useState(data)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  const HandlerContextValue = {
+    handleCheck
+  }
 
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth))
@@ -29,7 +34,20 @@ function App() {
     const storageTheme = JSON.parse(localStorage.getItem(`${STORAGE_KEY}-theme`))
     const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     setDarkTheme(storageTheme == undefined ? defaultDark : storageTheme)
-    console.log(darkTheme, storageTheme, defaultDark)
+  }
+
+  function handleAddTodo(todo) {
+    const _todos = [...todos]
+    _todos.push(todo)
+    setTodos(_todos)
+  }
+
+  function handleCheck(id) {
+    const _todos = [...todos]
+    const index = _todos.findIndex(t => t.id === id)
+    console.log(index)
+    _todos[index].complete = !_todos[index].complete
+    setTodos(_todos)
   }
 
   const modeIcon = darkTheme ? dark : light
@@ -39,6 +57,7 @@ function App() {
   }, 0)
 
   return (
+    <HandlerContext.Provider value={HandlerContextValue}>
     <div data-theme={darkTheme ? 'dark' : ''} className='container'>
       <div className='app'>
         <header className="header">
@@ -48,7 +67,7 @@ function App() {
             src={modeIcon} 
             alt="theme toggle"/>
         </header>
-        <AddToDo/>
+        <AddToDo handle={handleAddTodo}/>
         <div className="list">
           <ToDoList todos={todos}/>
           <div className="list__footer">
@@ -69,6 +88,7 @@ function App() {
         </div>
       </div>
     </div>
+    </HandlerContext.Provider>
   );
 }
 
