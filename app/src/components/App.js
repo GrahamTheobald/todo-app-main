@@ -78,6 +78,11 @@ function App() {
     setTodos(_todos.filter(t => t.id !== id))
   }
 
+  function handleClearCompleted() {
+    const _todos = [...todos]
+    setTodos(_todos.filter(t => !t.complete))
+  }
+
   function handleSort(sort) {
     setSort(sort)
   }
@@ -108,7 +113,9 @@ function App() {
               windowWidth >= 600 && 
               <Order active={sort} width="wide"/>
             }
-            <div className="list__footer__button">Clear Completed</div>
+            <div 
+              onClick={() => handleClearCompleted()}
+              className="list__footer__button">Clear Completed</div>
           </div>
         </div>
         {
