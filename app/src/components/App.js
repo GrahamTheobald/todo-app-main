@@ -32,7 +32,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (darkTheme == undefined) return
+    if (darkTheme === undefined) return
     localStorage.setItem(`${STORAGE_KEY}-theme`, darkTheme)
   }, [darkTheme])
 
@@ -44,7 +44,7 @@ function App() {
   function initialTheme() {
     const storageTheme = JSON.parse(localStorage.getItem(`${STORAGE_KEY}-theme`))
     const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setDarkTheme(storageTheme == undefined ? defaultDark : storageTheme)
+    setDarkTheme(storageTheme === undefined ? defaultDark : storageTheme)
   }
 
   function initialTodos() {

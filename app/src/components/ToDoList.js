@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react'
-import { HandlerContext, SORT } from './App'
+import { HandlerContext } from './App'
 import Todo from './Todo'
 
 export const DragContext = React.createContext()
 
 export default function ToDoList({todos}) {
-  const {sort, handleDragOrder} = useContext(HandlerContext)
+  const {handleDragOrder} = useContext(HandlerContext)
   const [dragItem, setDragItem] = useState(null)
   const [dragOverItem, setDragOverItem] = useState(null)
 
@@ -22,7 +22,7 @@ export default function ToDoList({todos}) {
   }
   useEffect(() => {
     handleDragOrder(dragItem, dragOverItem)
-  }, [dragItem, dragOverItem])
+  }, [dragItem, dragOverItem, handleDragOrder])
 
   return (
     <DragContext.Provider value={DragContextValue}>

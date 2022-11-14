@@ -1,4 +1,4 @@
-import React, {useState, useContext, useRef} from 'react'
+import React, {useState, useContext} from 'react'
 import Delete from './Delete'
 import Check from './Check'
 import { HandlerContext, SORT } from './App'
@@ -7,7 +7,7 @@ import '../css/todo.css'
 
 export default function Todo({todo, index}) {
   const {handleCheck, sort} = useContext(HandlerContext)
-  const {handleDragItem, handleDragOverItem, handleDragEnd} = useContext(DragContext)
+  const {handleDragItem, handleDragOverItem} = useContext(DragContext)
   const [hover, setHover] = useState(false)
   const [drag, setDrag] = useState(false)
 
