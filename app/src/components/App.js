@@ -9,16 +9,20 @@ import { v4 as uuid} from 'uuid'
 import '../css/app.css'
 
 const STORAGE_KEY = 'todo-app-main'
+export const SORT = {ALL:'all', ACTIVE:'active', COMPLETE:'complete'}
 export const HandlerContext = React.createContext()
 
 function App() {
   const [darkTheme, setDarkTheme] = useState()
   const [todos, setTodos] = useState([])
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [sort, setSort] = useState(SORT.ALL)
 
   const HandlerContextValue = {
     handleCheck,
     handleDelete,
+    handleSort,
+    sort
   }
 
   useEffect(() => {
@@ -66,6 +70,10 @@ function App() {
     setTodos(_todos.filter(t => t.id !== id))
   }
 
+  function handleSort(sort) {
+    setSort(sort)
+  }
+
   const modeIcon = darkTheme ? dark : light
   const itemsLeft = todos.reduce((count, todo) => {
     if (!todo.complete) count += 1
@@ -97,7 +105,7 @@ function App() {
         </div>
         {
           windowWidth < 600 &&
-          <Order active="all"/>
+          <Order active={sort}/>
         }
         <div className="footer">
           Drag and drop to reorder list

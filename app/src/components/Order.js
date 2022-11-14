@@ -1,16 +1,24 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { HandlerContext, SORT } from './App'
 import '../css/order.css'
 
 export default function Order({active}) {
+  const {handleSort} = useContext(HandlerContext)
   return (
     <div className="order">
-      <div className={active==="all" ? "active" : ""}>
+      <div
+        onClick={() => handleSort(SORT.ALL)} 
+        className={active===SORT.ALL ? "active" : ""}>
         All
       </div>
-      <div className={active==="active" ? "active" : ""}>
+      <div
+        onClick={() => handleSort(SORT.ACTIVE)} 
+        className={active===SORT.ACTIVE ? "active" : ""}>
         Active
       </div>
-      <div className={active==="completed" ? "active" : ""}>
+      <div 
+        onClick={() => handleSort(SORT.COMPLETE)} 
+        className={active===SORT.COMPLETE ? "active" : ""}>
         Completed
       </div>
     </div>
