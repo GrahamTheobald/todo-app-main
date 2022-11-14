@@ -5,7 +5,6 @@ import AddToDo from './AddToDo'
 import ToDoList from './ToDoList'
 import Order from './Order'
 import data from '../data.json'
-import { v4 as uuid} from 'uuid'
 import '../css/app.css'
 
 const STORAGE_KEY = 'todo-app-main'
@@ -22,6 +21,7 @@ function App() {
     handleCheck,
     handleDelete,
     handleSort,
+    handleDragOrder,
     sort
   }
 
@@ -50,6 +50,14 @@ function App() {
   function initialTodos() {
     const storageTodos = JSON.parse(localStorage.getItem(`${STORAGE_KEY}-todos`))
     setTodos(storageTodos || data)
+  }
+
+  function handleDragOrder(dragItem, dragOverItem) {
+    if (dragItem === dragOverItem) return
+    const _todos = [...todos]
+    const removed = _todos.splice(dragItem, 1)
+    _todos.splice(dragOverItem, 0, ...removed)
+    setTodos(_todos)
   }
 
   function handleAddTodo(todo) {
@@ -98,7 +106,7 @@ function App() {
             <div>{itemsLeft} items left</div>
             { 
               windowWidth >= 600 && 
-              <Order active="all" width="wide"/>
+              <Order active={sort} width="wide"/>
             }
             <div className="list__footer__button">Clear Completed</div>
           </div>

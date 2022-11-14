@@ -4,6 +4,10 @@
     align-items: center;
     padding: 1.2rem;
     border-bottom: 1px solid var(--MutedText);
+    cursor: move; 
+}
+.todo.drag {
+    background-color: var(--DarkBackground);
 }
 .todo__left {
     display: flex;
