@@ -7,7 +7,13 @@ import '../css/todo.css'
 
 export default function Todo({todo, index}) {
   const {handleCheck, sort} = useContext(HandlerContext)
-  const {handleDragItem, handleDragOverItem} = useContext(DragContext)
+  const {
+    handleDragItem, 
+    handleDragOverItem, 
+    handleDragOrder,
+    dragItem,
+    dragOverItem
+  } = useContext(DragContext)
   const [hover, setHover] = useState(false)
   const [drag, setDrag] = useState(false)
 
@@ -37,7 +43,10 @@ export default function Todo({todo, index}) {
           }} 
           onDragEnter={() => handleDragOverItem(index)}
           onDragOver={(e) => e.preventDefault()}
-          onDragEnd={() => setDrag(false)}
+          onDragEnd={() => {
+            setDrag(false)
+            handleDragOrder(dragItem, dragOverItem)
+          }}
           draggable
           className={style}
           onMouseOver={() => setHover(true)}

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { HandlerContext } from './App'
 import Todo from './Todo'
 
@@ -12,6 +12,9 @@ export default function ToDoList({todos}) {
   const DragContextValue = {
     handleDragItem,
     handleDragOverItem,
+    handleDragOrder,
+    dragItem,
+    dragOverItem
   }
 
   function handleDragItem(id) {
@@ -20,9 +23,6 @@ export default function ToDoList({todos}) {
   function handleDragOverItem(id) {
     setDragOverItem(id)
   }
-  useEffect(() => {
-    handleDragOrder(dragItem, dragOverItem)
-  }, [dragItem, dragOverItem, handleDragOrder])
 
   return (
     <DragContext.Provider value={DragContextValue}>
