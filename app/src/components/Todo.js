@@ -42,10 +42,12 @@ export default function Todo({todo, index}) {
             handleDragItem(index)
           }} 
           onDragEnter={() => handleDragOverItem(index)}
-          onDragOver={(e) => e.preventDefault()}
+          onDragOver={(e) => {
+            e.preventDefault()
+            handleDragOrder(dragItem, dragOverItem)
+          }}
           onDragEnd={() => {
             setDrag(false)
-            handleDragOrder(dragItem, dragOverItem)
           }}
           draggable
           className={style}
